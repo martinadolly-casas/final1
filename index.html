@@ -383,7 +383,7 @@
                 Universidades.
             </p>
             <p>
-                Según tal ranking, un intercambio desde la Universidad de Chile a <mark>[COMPLETAR: Destino]</mark>
+                Según tal ranking, un intercambio desde la Universidad de Chile a Universidad de São Paulo
                 implica moverse entre los lugares <span data-dato="universidades.origen"></span> y
                 <span data-dato="universidades.destino"></span> del mundo.
             </p>
@@ -391,7 +391,15 @@
             <div id="universidades" class="ranking"></div>
             <p>La diferencia de posiciones se explica cuando se consideran las siguientes dimensiones:</p>
 
-            <div class="grafico"><canvas id="comparaUniversidades"></canvas></div>
+            <div class="grafico">
+    <figure class="grafico-radar">
+        <img src="viz%20(3).svg" alt="Comparación de indicadores QS entre la Universidad de Chile y la Universidade de São Paulo">
+        <figcaption>
+            <span style="color: #1f77b4;">■</span> Universidad de Chile
+            <span style="color: #ff7f0e;">■</span> Universidade de São Paulo
+        </figcaption>
+    </figure>
+</div>
             <p><mark>[COMPLETAR: Comentario que ayude a leer el gráfico]</mark></p>
 
             <h3>Diferencia entre escuelas de origen y destino</h3>
@@ -399,7 +407,7 @@
                 En su versión publicada el 25 de marzo de 2026, son <span data-dato="escuelas.total"></span> las
                 instituciones consideradas en el Ranking <abbr title="Quacquarelli Symonds">QS</abbr> para el área de
                 Arte y Diseño. Según este ranking, un intercambio desde Diseño de la Universidad de Chile a
-                <mark>[COMPLETAR: Destino]</mark> implica moverse entre los lugares
+                Universidad de São Paulo implica moverse entre los lugares
                 <span data-dato="escuelas.origen"></span> y <span data-dato="escuelas.destino"></span> del mundo.
             </p>
 
@@ -425,7 +433,7 @@
     </div>
     <div>
         <img src="https://s2-valor.glbimg.com/tk5m0MDbW8i-hG5VV1ktp6XMJk0%3D/0x0%3A800x420/924x0/smart/filters%3Astrip_icc%28%29/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2021/0/A/maIeljSGCEpGLys6C8Aw/cidade-universitaria-da-usp-marcos-santos-usp-imagens.png" alt="Espacios exteriores de la Cidade Universitária" />
-        <figcaption>Espacios exteriores y áreas verdes del campus.</figcaption>
+        <figcaption>Espacios exteriores del campus.</figcaption>
     </div>
 </figure>
 
@@ -506,10 +514,10 @@
                     </dd>
                     <dd>
                         <em>Uso de IA:</em> En este trabajo de Diseño y Visualización de Información se utilizaron
-                        herramientas de inteligencia artificial generativa. [Especificar herramienta/s.] Estas fueron
-                        empleadas en [indicar etapas o secciones]. [Si aplica: los prompts utilizados y la metodología
+                        herramientas de inteligencia artificial generativa. Como claude y Chatgpt. Estas fueron
+                        empleadas en la aplicación de imagenes en la pagina y correción de graficos. [Si aplica: los prompts utilizados y la metodología
                         de integración se describen en la sección correspondiente.] Todo el contenido fue revisado y
-                        validado por <a href="#" rel="me">Nombre Apellido</a> y <a href="#" rel="me">Nombre Apellido</a>,
+                        validado por <a href="#" rel="me">Martina Casas</a> <a href="#" rel="me"></a>,
                         quienes asumimos plena responsabilidad sobre el trabajo presentado.
                     </dd>
                     <dd>
@@ -527,9 +535,9 @@
             document.addEventListener("DOMContentLoaded", () => {
                 // Datos: única fuente para textos y cuadrículas
                 const datos = {
-                    universidades: { total: 1504, origen: 186, destino: 133 },
-                    escuelas: { total: 303, origen: 155, destino: 97 },
-                };
+  universidades: { total: 1504, origen: 186, destino: 133 },
+  escuelas: { total: 303, origen: 175, destino: 96 },
+};
 
                 document.querySelectorAll("[data-dato]").forEach((el) => {
                     const [grupo, campo] = el.dataset.dato.split(".");
