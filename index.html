@@ -394,11 +394,9 @@
             <div class="grafico">
     <figure class="grafico-radar">
         <img src="viz%20(3).svg" alt="Comparación de indicadores QS entre la Universidad de Chile y la Universidade de São Paulo">
-        <figcaption>
-            <span style="color: #1f77b4;">■</span> Universidad de Chile
-            <span style="color: #ff7f0e;">■</span> Universidade de São Paulo
-        </figcaption>
-    </figure>
+       <div class="grafico">
+    <canvas id="comparaUniversidades"></canvas>
+</div>
 </div>
             <p><mark>[COMPLETAR: Comentario que ayude a leer el gráfico]</mark></p>
 
@@ -561,6 +559,7 @@
 
                 // Gráficos de radar
                 
+
 // Gráficos de radar
 const radar = (id) =>
     new Chart(document.getElementById(id), {
@@ -568,8 +567,8 @@ const radar = (id) =>
         data: {
             labels: [
                 "Reputación académica",
-                "Reputación entre empleadores",
-                "Relación profesores-estudiantes",
+                "Reputación empleadores",
+                "Profesores / estudiantes",
                 "Citas por profesor",
                 "Profesores internacionales",
                 "Estudiantes internacionales",
@@ -580,7 +579,7 @@ const radar = (id) =>
                     label: "Universidad de Chile",
                     data: [92.0, 85.1, 9.9, 16.0, 10.6, 8.2, 76.8],
                     borderColor: "rgb(54, 162, 235)",
-                    backgroundColor: "rgba(54, 162, 235, 0.2)",
+                    backgroundColor: "rgba(54, 162, 235, 0.18)",
                     borderWidth: 2,
                     pointRadius: 3
                 },
@@ -588,7 +587,7 @@ const radar = (id) =>
                     label: "Universidade de São Paulo",
                     data: [97.4, 71.3, 26.9, 34.4, 6.4, 3.7, 96.5],
                     borderColor: "rgb(255, 99, 132)",
-                    backgroundColor: "rgba(255, 99, 132, 0.2)",
+                    backgroundColor: "rgba(255, 99, 132, 0.18)",
                     borderWidth: 2,
                     pointRadius: 3
                 }
@@ -596,16 +595,25 @@ const radar = (id) =>
         },
         options: {
             responsive: true,
-            maintainAspectRatio: true,
+            maintainAspectRatio: false,
             scales: {
                 r: {
                     min: 0,
                     max: 100,
                     ticks: {
-                        stepSize: 10
+                        stepSize: 20,
+                        backdropColor: "transparent"
+                    },
+                    grid: {
+                        color: "#dddddd"
+                    },
+                    angleLines: {
+                        color: "#cccccc"
                     },
                     pointLabels: {
+                        color: "#333333",
                         font: {
+                            family: "Arial",
                             size: 11
                         }
                     }
@@ -614,11 +622,16 @@ const radar = (id) =>
             plugins: {
                 legend: {
                     display: true,
-                    position: "top"
+                    position: "top",
+                    labels: {
+                        usePointStyle: true,
+                        padding: 20
+                    }
                 }
             }
         }
     });
+
 ;
 
                 radar("comparaUniversidades");
