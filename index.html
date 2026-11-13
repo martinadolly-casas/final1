@@ -560,27 +560,66 @@
                 ranking("escuelas", datos.escuelas);
 
                 // Gráficos de radar
-                const radar = (id) =>
-                    new Chart(document.getElementById(id), {
-                        type: "radar",
-                        data: {
-                            labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"],
-                            datasets: [
-                                {
-                                    label: "Origen",
-                                    data: [65, 59, 80, 81, 56, 55, 40],
-                                    borderColor: "rgb(54, 162, 235)",
-                                    backgroundColor: "rgba(54, 162, 235, 0.2)",
-                                },
-                                {
-                                    label: "Destino",
-                                    data: [28, 48, 40, 19, 96, 27, 100],
-                                    borderColor: "rgb(255, 99, 132)",
-                                    backgroundColor: "rgba(255, 99, 132, 0.2)",
-                                },
-                            ],
-                        },
-                    });
+                
+// Gráficos de radar
+const radar = (id) =>
+    new Chart(document.getElementById(id), {
+        type: "radar",
+        data: {
+            labels: [
+                "Reputación académica",
+                "Reputación entre empleadores",
+                "Relación profesores-estudiantes",
+                "Citas por profesor",
+                "Profesores internacionales",
+                "Estudiantes internacionales",
+                "Red internacional de investigación"
+            ],
+            datasets: [
+                {
+                    label: "Universidad de Chile",
+                    data: [92.0, 85.1, 9.9, 16.0, 10.6, 8.2, 76.8],
+                    borderColor: "rgb(54, 162, 235)",
+                    backgroundColor: "rgba(54, 162, 235, 0.2)",
+                    borderWidth: 2,
+                    pointRadius: 3
+                },
+                {
+                    label: "Universidade de São Paulo",
+                    data: [97.4, 71.3, 26.9, 34.4, 6.4, 3.7, 96.5],
+                    borderColor: "rgb(255, 99, 132)",
+                    backgroundColor: "rgba(255, 99, 132, 0.2)",
+                    borderWidth: 2,
+                    pointRadius: 3
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                r: {
+                    min: 0,
+                    max: 100,
+                    ticks: {
+                        stepSize: 10
+                    },
+                    pointLabels: {
+                        font: {
+                            size: 11
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: "top"
+                }
+            }
+        }
+    });
+;
 
                 radar("comparaUniversidades");
                 radar("comparaEscuelas");
