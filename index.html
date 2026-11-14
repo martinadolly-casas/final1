@@ -330,7 +330,7 @@
                 <h1>Intercambio</h1>
                 <h2>una experiencia en Brasil</h2>
                 <h3>desde la Universidad de Chile</h3>
-                <h4>Por <a href="#" target="_blank" rel="noopener">Martina Casas</a> <a href="#" target="_blank" rel="noopener"</a></h4>
+                <h4>Por <a href="#" target="_blank" rel="noopener">Martina Casas y Roberto Albornoz</a> <a href="#" target="_blank" rel="noopener"</a></h4>
                 <h5>27 de noviembre, 2026</h5>
             </header>
 
@@ -391,13 +391,7 @@
             <div id="universidades" class="ranking"></div>
             <p>La diferencia de posiciones se explica cuando se consideran las siguientes dimensiones:</p>
 
-            <div class="grafico">
-    <figure class="grafico-radar">
-        <img src="viz%20(3).svg" alt="Comparación de indicadores QS entre la Universidad de Chile y la Universidade de São Paulo">
-       <div class="grafico">
-    <canvas id="comparaUniversidades"></canvas>
-</div>
-</div>
+            <div class="grafico"><canvas id="comparaUniversidades"></canvas></div>
             <p><mark>[COMPLETAR: Comentario que ayude a leer el gráfico]</mark></p>
 
             <h3>Diferencia entre escuelas de origen y destino</h3>
@@ -513,9 +507,8 @@
                     <dd>
                         <em>Uso de IA:</em> En este trabajo de Diseño y Visualización de Información se utilizaron
                         herramientas de inteligencia artificial generativa. Como claude y Chatgpt. Estas fueron
-                        empleadas en la aplicación de imagenes en la pagina y correción de graficos. [Si aplica: los prompts utilizados y la metodología
-                        de integración se describen en la sección correspondiente.] Todo el contenido fue revisado y
-                        validado por <a href="#" rel="me">Martina Casas</a> <a href="#" rel="me"></a>,
+                        empleadas en la aplicación de imagenes en la pagina y correción de graficos. Todo el contenido fue revisado y
+                        validado por <a href="#" rel="me">Martina Casas y Roberto Albornoz</a> <a href="#" rel="me"></a>,
                         quienes asumimos plena responsabilidad sobre el trabajo presentado.
                     </dd>
                     <dd>
@@ -549,7 +542,7 @@
                     const celdas = Array.from({ length: total }, (_, i) => {
                         const n = i + 1;
                         const clase = n === destino ? "destino" : n === origen ? "origen" : n > min && n < max ? "entre" : "";
-                        return `<span class="${clase}">${n}</span>`;
+                        return `<span class="clase">{n}</span>`;
                     });
                     document.getElementById(id).innerHTML = celdas.join("");
                 };
@@ -558,81 +551,27 @@
                 ranking("escuelas", datos.escuelas);
 
                 // Gráficos de radar
-                
-
-// Gráficos de radar
-const radar = (id) =>
-    new Chart(document.getElementById(id), {
-        type: "radar",
-        data: {
-            labels: [
-                "Reputación académica",
-                "Reputación empleadores",
-                "Profesores / estudiantes",
-                "Citas por profesor",
-                "Profesores internacionales",
-                "Estudiantes internacionales",
-                "Red internacional de investigación"
-            ],
-            datasets: [
-                {
-                    label: "Universidad de Chile",
-                    data: [92.0, 85.1, 9.9, 16.0, 10.6, 8.2, 76.8],
-                    borderColor: "rgb(54, 162, 235)",
-                    backgroundColor: "rgba(54, 162, 235, 0.18)",
-                    borderWidth: 2,
-                    pointRadius: 3
-                },
-                {
-                    label: "Universidade de São Paulo",
-                    data: [97.4, 71.3, 26.9, 34.4, 6.4, 3.7, 96.5],
-                    borderColor: "rgb(255, 99, 132)",
-                    backgroundColor: "rgba(255, 99, 132, 0.18)",
-                    borderWidth: 2,
-                    pointRadius: 3
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                r: {
-                    min: 0,
-                    max: 100,
-                    ticks: {
-                        stepSize: 20,
-                        backdropColor: "transparent"
-                    },
-                    grid: {
-                        color: "#dddddd"
-                    },
-                    angleLines: {
-                        color: "#cccccc"
-                    },
-                    pointLabels: {
-                        color: "#333333",
-                        font: {
-                            family: "Arial",
-                            size: 11
-                        }
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: true,
-                    position: "top",
-                    labels: {
-                        usePointStyle: true,
-                        padding: 20
-                    }
-                }
-            }
-        }
-    });
-
-;
+                const radar = (id) =>
+                    new Chart(document.getElementById(id), {
+                        type: "radar",
+                        data: {
+                            labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"],
+                            datasets: [
+                                {
+                                    label: "Origen",
+                                    data: [65, 59, 80, 81, 56, 55, 40],
+                                    borderColor: "rgb(54, 162, 235)",
+                                    backgroundColor: "rgba(54, 162, 235, 0.2)",
+                                },
+                                {
+                                    label: "Destino",
+                                    data: [28, 48, 40, 19, 96, 27, 100],
+                                    borderColor: "rgb(255, 99, 132)",
+                                    backgroundColor: "rgba(255, 99, 132, 0.2)",
+                                },
+                            ],
+                        },
+                    });
 
                 radar("comparaUniversidades");
                 radar("comparaEscuelas");
@@ -653,3 +592,4 @@ const radar = (id) =>
         </script>
     </body>
 </html>
+
