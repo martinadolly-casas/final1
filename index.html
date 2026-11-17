@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="es">
 <head>
@@ -16,18 +15,18 @@
 <style>
 :root {
     --color-bg: #eaeaea;
-    --color-accent: #777777;
-    --color-text: #3c3c3c;
-    --color-text-dark: #1e1e1e;
-    --color-text-light: #5a5a5a;
+    --color-accent: slategray;
+    --color-text: rgb(60, 60, 60);
+    --color-text-dark: rgb(30, 30, 30);
+    --color-text-light: rgb(90, 90, 90);
     --color-border: silver;
-    --color-origen: #292929;
-    --color-destino: #777777;
+    --color-origen: blue;
+    --color-destino: red;
     --font-sans: "Bricolage Grotesque", Helvetica, Arial, sans-serif;
     --font-serif: "Newsreader", Georgia, serif;
 }
 
-* {
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -38,7 +37,7 @@ body {
     font-size: 1.1rem;
     line-height: 1.6;
     color: var(--color-text);
-    background: linear-gradient(to bottom, #eaeaea, white);
+    background: linear-gradient(to bottom, var(--color-bg), white);
 }
 
 a {
@@ -47,16 +46,21 @@ a {
     text-underline-offset: 3px;
 }
 
-a:hover { text-decoration-style: solid; }
+a:hover {
+    text-decoration-style: solid;
+}
 
 p {
     margin-bottom: 1rem;
     text-align: justify;
+    text-align-last: left;
     letter-spacing: 0.01em;
     hyphens: auto;
 }
 
-em { font-weight: 500; }
+em {
+    font-weight: 500;
+}
 
 abbr {
     font-size: 0.85em;
@@ -65,8 +69,8 @@ abbr {
 }
 
 mark {
-    background: #dedede;
-    color: #222;
+    background: yellow;
+    color: inherit;
 }
 
 ul, ol {
@@ -74,7 +78,9 @@ ul, ol {
     list-style-position: inside;
 }
 
-li { margin-bottom: 0.4rem; }
+li {
+    margin-bottom: 0.25rem;
+}
 
 h1, h2, h3, h4, h5 {
     font-family: var(--font-sans);
@@ -82,12 +88,17 @@ h1, h2, h3, h4, h5 {
     line-height: 1.2;
 }
 
-h3 { margin-top: 3rem; }
-h3 + p { margin-top: 1rem; }
+h3 {
+    margin-top: 3rem;
+}
+
+h3 + p {
+    margin-top: 1rem;
+}
 
 hr {
     margin: 2rem 0;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
 }
 
 .container {
@@ -107,7 +118,7 @@ header h1::before {
     content: "✈";
     display: block;
     font-size: 4rem;
-    color: #777;
+    color: slategray;
     margin-bottom: 1rem;
 }
 
@@ -121,6 +132,7 @@ header h1 {
     font-size: calc(1.1rem + 1.8vw);
     font-weight: 600;
     letter-spacing: 0.1rem;
+    line-height: 1.1;
     text-transform: uppercase;
 }
 
@@ -140,6 +152,7 @@ header h4 {
 header h5 {
     margin: 1rem 0 2rem;
     font-size: 0.8rem;
+    letter-spacing: 0.05rem;
 }
 
 header + p {
@@ -147,7 +160,7 @@ header + p {
     font-weight: 300;
 }
 
-/* IMÁGENES */
+/* FOTOGRAFÍAS */
 
 figure {
     display: flex;
@@ -156,7 +169,9 @@ figure {
     margin: 0.5rem -2vw 2rem;
 }
 
-figure > div { flex: 1; }
+figure > div {
+    flex: 1;
+}
 
 figure img {
     display: block;
@@ -168,13 +183,16 @@ figcaption {
     margin-top: 0.4rem;
     font-size: 0.8rem;
     color: #666;
+    text-indent: 2vw;
 }
 
 @media (orientation: portrait) {
-    figure { flex-direction: column; }
+    figure {
+        flex-direction: column;
+    }
 }
 
-/* RANKINGS */
+/* RANKINGS CON COLORES ORIGINALES */
 
 .ranking, #map {
     width: calc(100% + 4vw);
@@ -192,35 +210,39 @@ figcaption {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: silver;
-    border: 1px solid silver;
+    color: var(--color-border);
+    border: 1px solid var(--color-border);
 }
 
 .ranking .entre {
-    color: #111;
-    border-color: #111;
+    color: black;
+    border-color: black;
 }
 
 .ranking .destino {
-    color: #666;
-    border-color: #666;
-    background: rgba(110,110,110,0.15);
+    color: var(--color-destino);
+    border-color: var(--color-destino);
+    background: rgba(255, 0, 0, 0.1);
     font-weight: bold;
 }
 
 .ranking .origen {
-    color: #222;
-    border-color: #222;
-    background: rgba(20,20,20,0.12);
+    color: var(--color-origen);
+    border-color: var(--color-origen);
+    background: rgba(0, 0, 255, 0.1);
     font-weight: bold;
 }
+
+/* GRÁFICOS Y MAPA */
 
 .grafico {
     max-width: 500px;
     margin: 2.5rem auto;
 }
 
-#map { height: 400px; }
+#map {
+    height: 400px;
+}
 
 .leaflet-attribution-flag {
     display: none !important;
@@ -239,7 +261,7 @@ h2.destino::before {
     display: block;
     margin: 5rem auto 1rem;
     font-size: 3rem;
-    color: #777;
+    color: slategray;
 }
 
 h2.pasaporte::before {
@@ -247,7 +269,7 @@ h2.pasaporte::before {
     display: block;
     margin: 3rem auto 1rem;
     font-size: 2.5rem;
-    color: #777;
+    color: slategray;
 }
 
 /* PIE DE PÁGINA */
@@ -261,6 +283,7 @@ footer {
 dl {
     font-family: var(--font-sans);
     font-size: 80%;
+    letter-spacing: 0.025rem;
 }
 
 dt {
@@ -293,7 +316,8 @@ dd em {
     <h3>desde la Universidad de Chile</h3>
 
     <h4>
-        Por <a href="#">Martina Casas y Roberto Albornoz</a>
+        Por
+        <a href="#">Martina Casas y Roberto Albornoz</a>
     </h4>
 
     <h5>27 de noviembre, 2026</h5>
@@ -323,7 +347,7 @@ y <em>QS World University Rankings by Subject</em>,
 que en nuestro caso corresponde a <em>Art and Design</em>.
 
 En el panorama de educación superior actual,
-contar con presencia en ambas vertientes
+<em>contar</em> con <em>presencia</em> en ambas vertientes
 representa una ventaja sobre aquellos programas
 que no aparecen en las métricas de QS.
 </p>
@@ -352,8 +376,9 @@ de la convocatoria.
 <figure>
     <div>
         <img
-        src="https://fau.uchile.cl/dam/jcr%3Aeabf568b-82f6-492e-b30c-eb03c9371dde/facultad-infraestructura-general1.jpg"
-        alt="Facultad de Arquitectura y Urbanismo UChile">
+            src="https://fau.uchile.cl/dam/jcr%3Aeabf568b-82f6-492e-b30c-eb03c9371dde/facultad-infraestructura-general1.jpg"
+            alt="Facultad de Arquitectura y Urbanismo de la Universidad de Chile"
+        >
 
         <figcaption>
             Facultad de Arquitectura y Urbanismo,
@@ -363,8 +388,9 @@ de la convocatoria.
 
     <div>
         <img
-        src="https://media.revistaad.es/photos/69c52e0bf56e38426becaced/master/w_1600%2Cc_limit/Faculdade_de_Arquitetura_e_Urbanismo_-_USP_01.jpg"
-        alt="Faculdade de Arquitetura e Urbanismo USP">
+            src="https://media.revistaad.es/photos/69c52e0bf56e38426becaced/master/w_1600%2Cc_limit/Faculdade_de_Arquitetura_e_Urbanismo_-_USP_01.jpg"
+            alt="Faculdade de Arquitetura e Urbanismo de la USP"
+        >
 
         <figcaption>
             Faculdade de Arquitetura e Urbanismo,
@@ -380,7 +406,8 @@ de la convocatoria.
 <p>
 En su versión publicada el 18 de junio de 2026,
 son <span data-dato="universidades.total"></span>
-las instituciones que cuentan en el Ranking QS
+las instituciones que <em>cuentan</em> en el Ranking
+<abbr title="Quacquarelli Symonds">QS</abbr>
 para Universidades.
 </p>
 
@@ -396,8 +423,8 @@ del mundo.
 <div id="universidades" class="ranking"></div>
 
 <p>
-La diferencia de posiciones se explica cuando se consideran
-las siguientes dimensiones:
+La diferencia de posiciones se explica cuando
+se consideran las siguientes dimensiones:
 </p>
 
 <div class="grafico">
@@ -405,7 +432,9 @@ las siguientes dimensiones:
 </div>
 
 <p>
-    <mark>[COMPLETAR: Comentario que ayude a leer el gráfico]</mark>
+    <mark>
+        [COMPLETAR: Comentario que ayude a leer el gráfico]
+    </mark>
 </p>
 
 <!-- RANKING ESCUELAS -->
@@ -415,7 +444,8 @@ las siguientes dimensiones:
 <p>
 En su versión publicada el 25 de marzo de 2026,
 son <span data-dato="escuelas.total"></span>
-las instituciones consideradas en el Ranking QS
+las instituciones consideradas en el Ranking
+<abbr title="Quacquarelli Symonds">QS</abbr>
 para el área de Arte y Diseño.
 
 Según este ranking, un intercambio desde Diseño
@@ -429,8 +459,8 @@ del mundo.
 <div id="escuelas" class="ranking"></div>
 
 <p>
-La diferencia de posiciones se explica cuando se
-consideran las siguientes dimensiones:
+La diferencia de posiciones se explica cuando
+se consideran las siguientes dimensiones:
 </p>
 
 <div class="grafico">
@@ -438,7 +468,9 @@ consideran las siguientes dimensiones:
 </div>
 
 <p>
-    <mark>[COMPLETAR: Comentario que ayude a leer el gráfico]</mark>
+    <mark>
+        [COMPLETAR: Comentario que ayude a leer el gráfico]
+    </mark>
 </p>
 
 <!-- ESCUELA DE DESTINO -->
@@ -475,8 +507,9 @@ formación en un entorno académico internacional.
 <figure>
     <div>
         <img
-        src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Cidade_universit%C3%A1ria_da_Universidade_de_S%C3%A3o_Paulo_%28USP%29.jpg"
-        alt="Vista aérea de la USP">
+            src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Cidade_universit%C3%A1ria_da_Universidade_de_S%C3%A3o_Paulo_%28USP%29.jpg"
+            alt="Vista aérea de la Cidade Universitária de la USP"
+        >
 
         <figcaption>
             Vista aérea de la Cidade Universitária,
@@ -486,8 +519,9 @@ formación en un entorno académico internacional.
 
     <div>
         <img
-        src="https://s2-valor.glbimg.com/tk5m0MDbW8i-hG5VV1ktp6XMJk0%3D/0x0%3A800x420/924x0/smart/filters%3Astrip_icc%28%29/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2021/0/A/maIeljSGCEpGLys6C8Aw/cidade-universitaria-da-usp-marcos-santos-usp-imagens.png"
-        alt="Espacios exteriores de la USP">
+            src="https://s2-valor.glbimg.com/tk5m0MDbW8i-hG5VV1ktp6XMJk0%3D/0x0%3A800x420/924x0/smart/filters%3Astrip_icc%28%29/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2021/0/A/maIeljSGCEpGLys6C8Aw/cidade-universitaria-da-usp-marcos-santos-usp-imagens.png"
+            alt="Espacios exteriores de la Cidade Universitária"
+        >
 
         <figcaption>
             Espacios exteriores del campus.
@@ -495,7 +529,7 @@ formación en un entorno académico internacional.
     </div>
 </figure>
 
-<!-- CIERRE -->
+<!-- CIERRE DE PRESENTACIÓN -->
 
 <p>
 Estudiar en la Universidade de São Paulo representa
@@ -516,6 +550,8 @@ sobre la disciplina, conocer otras metodologías
 de trabajo y desarrollar una mayor autonomía
 personal y académica.
 </p>
+
+<!-- ASPECTOS IMPORTANTES -->
 
 <h3>Aspectos a tener en cuenta</h3>
 
@@ -559,7 +595,7 @@ personal y académica.
 
 <hr>
 
-<!-- CÓMO POSTULAR -->
+<!-- POSTULACIÓN -->
 
 <h2 class="pasaporte">
     Cómo postular a un intercambio
@@ -573,18 +609,28 @@ internacional presencial:
 
 <ol>
     <li>
-        <a href="https://uchile.cl/presentacion/relaciones-internacionales/programa-de-movilidad-estudiantil---pme/estudios-parciales-en-el-extranjero/intercambio-internacional-presencial">
+        <a
+            href="https://uchile.cl/presentacion/relaciones-internacionales/programa-de-movilidad-estudiantil---pme/estudios-parciales-en-el-extranjero/intercambio-internacional-presencial"
+            target="_blank"
+            rel="noopener"
+        >
             Nivel Central (PME)
         </a>:
+
         Gestionado de forma central por el Programa
         de Movilidad Estudiantil de la Dirección de
         Relaciones Internacionales para toda la universidad.
     </li>
 
     <li>
-        <a href="https://fau.uchile.cl/dari">
+        <a
+            href="https://fau.uchile.cl/dari"
+            target="_blank"
+            rel="noopener"
+        >
             Nivel FAU
         </a>:
+
         Gestionado de manera independiente por la
         oficina de relaciones internacionales de cada
         unidad académica mediante convenios específicos.
@@ -599,11 +645,15 @@ ajustándose mejor a las asignaturas, áreas de estudio
 y requerimientos de Diseño.
 </p>
 
-<!-- INFOGRAFÍA COMPLETA EN HTML -->
+<!-- INFOGRAFÍA EN ESCALA DE GRISES -->
 
 <section style="margin:3rem auto; max-width:650px; color:#222;">
 
-    <h3 style="font-size:1.6rem; margin-bottom:0.6rem;">
+    <h3 style="
+        font-size:1.6rem;
+        margin-bottom:0.6rem;
+        color:#222;
+    ">
         Tu intercambio paso a paso
     </h3>
 
@@ -614,11 +664,17 @@ y requerimientos de Diseño.
 
     <!-- LÍNEA VERTICAL -->
 
-    <div style="border-left:2px solid #999; margin-left:20px;">
+    <div style="
+        border-left:2px solid #999;
+        margin-left:20px;
+    ">
 
         <!-- PASO 01 -->
 
-        <div style="position:relative; padding:0 0 2.5rem 35px;">
+        <div style="
+            position:relative;
+            padding:0 0 2.5rem 35px;
+        ">
 
             <span style="
                 position:absolute;
@@ -636,11 +692,15 @@ y requerimientos de Diseño.
                 font-weight:bold;
             ">01</span>
 
-            <h4 style="font-weight:700; margin-bottom:0.4rem;">
+            <h4 style="
+                font-weight:700;
+                margin-bottom:0.4rem;
+                color:#222;
+            ">
                 Revisa las convocatorias
             </h4>
 
-            <p>
+            <p style="color:#555;">
                 Consulta las oportunidades de intercambio
                 y universidades disponibles a través
                 de la Dirección de Relaciones Internacionales
@@ -650,7 +710,10 @@ y requerimientos de Diseño.
 
         <!-- PASO 02 -->
 
-        <div style="position:relative; padding:0 0 2.5rem 35px;">
+        <div style="
+            position:relative;
+            padding:0 0 2.5rem 35px;
+        ">
 
             <span style="
                 position:absolute;
@@ -669,11 +732,15 @@ y requerimientos de Diseño.
                 font-weight:bold;
             ">02</span>
 
-            <h4 style="font-weight:700; margin-bottom:0.4rem;">
+            <h4 style="
+                font-weight:700;
+                margin-bottom:0.4rem;
+                color:#222;
+            ">
                 Comprueba los requisitos
             </h4>
 
-            <p>
+            <p style="color:#555;">
                 Revisa las condiciones académicas,
                 el avance curricular y los requisitos
                 de idioma establecidos en la convocatoria.
@@ -682,7 +749,10 @@ y requerimientos de Diseño.
 
         <!-- PASO 03 -->
 
-        <div style="position:relative; padding:0 0 2.5rem 35px;">
+        <div style="
+            position:relative;
+            padding:0 0 2.5rem 35px;
+        ">
 
             <span style="
                 position:absolute;
@@ -701,11 +771,15 @@ y requerimientos de Diseño.
                 font-weight:bold;
             ">03</span>
 
-            <h4 style="font-weight:700; margin-bottom:0.4rem;">
+            <h4 style="
+                font-weight:700;
+                margin-bottom:0.4rem;
+                color:#222;
+            ">
                 Prepara tu postulación
             </h4>
 
-            <p>
+            <p style="color:#555;">
                 Reúne los documentos solicitados
                 y revisa las asignaturas que podrías
                 cursar y convalidar en la Universidad
@@ -715,7 +789,10 @@ y requerimientos de Diseño.
 
         <!-- PASO 04 -->
 
-        <div style="position:relative; padding:0 0 2.5rem 35px;">
+        <div style="
+            position:relative;
+            padding:0 0 2.5rem 35px;
+        ">
 
             <span style="
                 position:absolute;
@@ -734,11 +811,15 @@ y requerimientos de Diseño.
                 font-weight:bold;
             ">04</span>
 
-            <h4 style="font-weight:700; margin-bottom:0.4rem;">
+            <h4 style="
+                font-weight:700;
+                margin-bottom:0.4rem;
+                color:#222;
+            ">
                 Presenta tu solicitud
             </h4>
 
-            <p>
+            <p style="color:#555;">
                 Realiza la postulación siguiendo
                 las instrucciones y los plazos
                 establecidos por la FAU.
@@ -747,7 +828,10 @@ y requerimientos de Diseño.
 
         <!-- PASO 05 -->
 
-        <div style="position:relative; padding:0 0 2.5rem 35px;">
+        <div style="
+            position:relative;
+            padding:0 0 2.5rem 35px;
+        ">
 
             <span style="
                 position:absolute;
@@ -766,11 +850,15 @@ y requerimientos de Diseño.
                 font-weight:bold;
             ">05</span>
 
-            <h4 style="font-weight:700; margin-bottom:0.4rem;">
+            <h4 style="
+                font-weight:700;
+                margin-bottom:0.4rem;
+                color:#222;
+            ">
                 Espera los resultados
             </h4>
 
-            <p>
+            <p style="color:#555;">
                 Si eres seleccionado, continúa con los
                 procedimientos de aceptación de la
                 universidad de destino.
@@ -779,7 +867,10 @@ y requerimientos de Diseño.
 
         <!-- PASO 06 -->
 
-        <div style="position:relative; padding:0 0 0 35px;">
+        <div style="
+            position:relative;
+            padding:0 0 0 35px;
+        ">
 
             <span style="
                 position:absolute;
@@ -797,11 +888,15 @@ y requerimientos de Diseño.
                 font-weight:bold;
             ">06</span>
 
-            <h4 style="font-weight:700; margin-bottom:0.4rem;">
+            <h4 style="
+                font-weight:700;
+                margin-bottom:0.4rem;
+                color:#222;
+            ">
                 Organiza tu viaje
             </h4>
 
-            <p>
+            <p style="color:#555;">
                 Gestiona la documentación migratoria,
                 el alojamiento y los preparativos
                 académicos antes de viajar a Brasil.
@@ -810,7 +905,7 @@ y requerimientos de Diseño.
 
     </div>
 
-    <!-- NOTA -->
+    <!-- NOTA INFORMATIVA -->
 
     <p style="
         font-size:0.85rem;
@@ -838,45 +933,73 @@ y requerimientos de Diseño.
 
     <dd>
         <em>Datos:</em>
-        <a href="https://www.topuniversities.com/university-subject-rankings/art-design">
+
+        <a
+            href="https://www.topuniversities.com/university-subject-rankings/art-design"
+            target="_blank"
+            rel="noopener"
+        >
             QS World University Rankings for Art and Design
         </a>
+
         y
-        <a href="https://www.topuniversities.com/world-university-rankings">
+
+        <a
+            href="https://www.topuniversities.com/world-university-rankings"
+            target="_blank"
+            rel="noopener"
+        >
             QS World University Rankings
         </a>,
+
         consultados en noviembre de 2026.
     </dd>
 
     <dd>
         <em>Referente:</em>
+
         Estructura basada en los reportajes publicados por
-        <a href="https://www.reuters.com/graphics/">
+
+        <a
+            href="https://www.reuters.com/graphics/"
+            target="_blank"
+            rel="noopener"
+        >
             Reuters Graphics
         </a>,
-        lo que implica adoptar un estándar global de
-        validación visual y periodística.
+
+        lo que implica adoptar un estándar global
+        de validación visual y periodística aportado
+        por una agencia internacional de noticias.
     </dd>
 
     <dd>
         <em>Contexto:</em>
+
         Proyecto desarrollado como ejercicio final para
         la asignatura
-        <a href="https://github.com/profesorfaco/troncal">
+
+        <a
+            href="https://github.com/profesorfaco/troncal"
+            target="_blank"
+            rel="noopener"
+        >
             Diseño y Visualización de Información
         </a>,
+
         a cargo del Profesor Felipe Cortez.
     </dd>
 
     <dd>
         <em>Uso de IA:</em>
-        En este trabajo de Diseño y Visualización
-        de Información se utilizaron herramientas
-        de inteligencia artificial generativa,
+
+        En este trabajo de Diseño y Visualización de
+        Información se utilizaron herramientas de
+        inteligencia artificial generativa,
         como Claude y ChatGPT.
 
         Estas fueron empleadas en la aplicación
-        de imágenes para la página, corrección de gráficos y creación de infografías.
+        de imágenes en la página y corrección de gráficos.
 
         Todo el contenido fue revisado y validado
         por Martina Casas y Roberto Albornoz,
@@ -886,9 +1009,11 @@ y requerimientos de Diseño.
 
     <dd>
         <em>Recomendación:</em>
+
         Revisa otros destinos de intercambio,
         tales como el Politécnico de Milán,
-        la Universidad de Buenos Aires o la UNAM.
+        la Universidad de Buenos Aires,
+        la UNAM o el Tecnológico de Monterrey.
     </dd>
 </dl>
 
@@ -900,7 +1025,7 @@ y requerimientos de Diseño.
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-    // DATOS DEL RANKING
+    // DATOS DE LOS RANKINGS
 
     const datos = {
         universidades: {
@@ -908,6 +1033,7 @@ document.addEventListener("DOMContentLoaded", () => {
             origen: 186,
             destino: 133
         },
+
         escuelas: {
             total: 303,
             origen: 175,
@@ -915,14 +1041,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // COMPLETAR NÚMEROS EN LOS PÁRRAFOS
+    // MOSTRAR NÚMEROS EN LOS PÁRRAFOS
 
     document.querySelectorAll("[data-dato]").forEach((el) => {
         const [grupo, campo] = el.dataset.dato.split(".");
         el.textContent = datos[grupo][campo];
     });
 
-    // CUADRÍCULAS CON NÚMEROS
+    // CUADRÍCULAS DE RANKING
 
     const ranking = (id, { total, origen, destino }) => {
 
@@ -948,7 +1074,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ranking("escuelas", datos.escuelas);
 
     // GRÁFICOS DE RADAR
-    // Datos de ejemplo pendientes de reemplazar
+    // DATOS DE EJEMPLO, PENDIENTES DE REEMPLAZAR
 
     const radar = (id) =>
         new Chart(document.getElementById(id), {
@@ -968,15 +1094,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 datasets: [
                     {
                         label: "Origen",
-                        data: [65, 59, 80, 81, 56, 55, 40],
-                        borderColor: "rgb(30, 30, 30)",
-                        backgroundColor: "rgba(30, 30, 30, 0.2)"
+
+                        data: [
+                            65, 59, 80, 81, 56, 55, 40
+                        ],
+
+                        borderColor: "rgb(54, 162, 235)",
+
+                        backgroundColor: "rgba(54, 162, 235, 0.2)"
                     },
+
                     {
                         label: "Destino",
-                        data: [28, 48, 40, 19, 96, 27, 100],
-                        borderColor: "rgb(130, 130, 130)",
-                        backgroundColor: "rgba(130, 130, 130, 0.2)"
+
+                        data: [
+                            28, 48, 40, 19, 96, 27, 100
+                        ],
+
+                        borderColor: "rgb(255, 99, 132)",
+
+                        backgroundColor: "rgba(255, 99, 132, 0.2)"
                     }
                 ]
             }
@@ -985,7 +1122,7 @@ document.addEventListener("DOMContentLoaded", () => {
     radar("comparaUniversidades");
     radar("comparaEscuelas");
 
-    // MAPA USP
+    // MAPA DE SÃO PAULO
 
     const map = L.map("map").setView(
         [-23.5613991, -46.7307891],
@@ -996,13 +1133,15 @@ document.addEventListener("DOMContentLoaded", () => {
         "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
         {
             maxZoom: 16,
-            attribution: "Tiles &copy; Esri"
+            attribution: "Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ"
         }
     ).addTo(map);
 
     L.marker([-23.5613991, -46.7307891])
         .addTo(map)
-        .bindPopup("<b>Universidade de São Paulo</b>")
+        .bindPopup(
+            "<b>Universidade de São Paulo</b><br>(USP)."
+        )
         .openPopup();
 
 });
@@ -1010,5 +1149,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
-
 
