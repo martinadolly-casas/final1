@@ -1,4 +1,4 @@
- document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
     // DATOS DE LOS RANKINGS
 
@@ -68,26 +68,27 @@
                 "Sostenibilidad"
             ],
             origen:  { nombre: "Universidad de Chile",      datos: [92.0, 85.1, 9.9, 16.0, 10.6, 8.2, 76.8, 95.7, 66.4] },
-            destino: { nombre: "Universidade de São Paulo", datos: [97.4, 71.3, 26.9, 34.4, 6.4, 3.7, 96.5, 96.8, 89.7] }
+            destino: { nombre: "Universidad de São Paulo", datos: [97.4, 71.3, 26.9, 34.4, 6.4, 3.7, 96.5, 96.8, 89.7] }
         },
 
         comparaEscuelas: {
             labels: [
-                ["Reputación académica", "(peso 90%)"],
-                ["Reputación empleadores", "(peso 10%)"],
-                ["Citas por paper", "(peso 0%)"],
-                ["H-index", "(peso 0%)"],
-                ["Red de investigación", "internacional (peso 0%)"]
+                ["Reputación", "académica (90%)"],
+                ["Reputación", "empleadores (10%)"],
+                ["Citas por", "paper (0%)"],
+                ["H-index", "(0%)"],
+                ["Red de investigación", "internacional (0%)"]
             ],
+            ajuste: { etiquetas: 2, abajo: 14 },
             origen:  { nombre: "Diseño, Universidad de Chile",   datos: [52.5, 78.5, null, null, null] },
-            destino: { nombre: "FAU, Universidade de São Paulo", datos: [58.8, 73.2, null, null, null] }
+            destino: { nombre: "Arte y Diseño, Universidad de São Paulo", datos: [58.8, 73.2, null, null, null] }
         }
     };
 
     Chart.defaults.font.family = '"Bricolage Grotesque", Helvetica, Arial, sans-serif';
     Chart.defaults.color = "rgb(60, 60, 60)";
 
-    const radar = (id, { labels, origen, destino }) => {
+    const radar = (id, { labels, origen, destino, ajuste = {} }) => {
 
         if (!labels.length) return;
 
@@ -117,6 +118,10 @@
                 responsive: true,
                 maintainAspectRatio: true,
 
+                layout: {
+                    padding: { bottom: ajuste.abajo || 0 }
+                },
+
                 interaction: {
                     mode: "index",
                     intersect: true
@@ -132,7 +137,7 @@
                         },
                         angleLines: { color: "rgba(0, 0, 0, 0.15)" },
                         grid: { color: "rgba(0, 0, 0, 0.15)" },
-                        pointLabels: { font: { size: 11 } }
+                        pointLabels: { font: { size: 11 }, padding: ajuste.etiquetas ?? 5 }
                     }
                 },
 
@@ -173,7 +178,7 @@
     L.marker([-23.5613991, -46.7307891])
         .addTo(map)
         .bindPopup(
-            "<b>Universidade de São Paulo</b><br>(USP)."
+            "<b>Universidad de São Paulo</b><br>(USP)."
         )
         .openPopup();
 
